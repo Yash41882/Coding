@@ -1,0 +1,44 @@
+#include <stdio.h>
+int main() 
+{
+    // Declaring the characters to store values
+	char name[20], surname[20];
+    char midterm, final; 
+    // Declaring a file pointer as fptr to access the file  
+	FILE *fptr;
+
+    // Creating or opening the file
+	fptr=(fopen("notes.txt","w"));
+
+    // Checking if there is an error in opening a file
+	if(fptr==NULL) 
+    {
+        // If file doesn't open prits and error message
+		printf("Error!");
+	}
+
+    // If file successfully opens performs the task
+    else
+    {
+        // Intialise the for loop to store records of 10 students
+	    for (int i=0;i<10;++i) 
+        {
+            // Storing name
+		    printf("\nFor student %d\nEnter name: ", i+1);
+		    scanf("%s",name);
+            // Storing surname
+            printf("Enter Surname: ");
+		    scanf("%s",surname);
+            // Taking mid term grade
+		    printf("Enter Mid Term Grade: ");
+		    scanf(" %c",&midterm);
+            // Taking final grade.
+            printf("Enter Final Grade: ");
+		    scanf(" %c",&final);
+            // Writing the data into file using fprintf() function
+		    fprintf(fptr,"\nName = %s \nSurname =%s \nMidterm Grade = %c \nFinal Grade = %c\n",name,surname,midterm,final);
+	    }
+    }    
+	fclose(fptr);
+	return 0;
+}
